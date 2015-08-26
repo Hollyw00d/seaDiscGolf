@@ -5,6 +5,7 @@ class CommentsController < ApplicationController
 	end
 
 	def delete
+		
 	end
 
 	private
