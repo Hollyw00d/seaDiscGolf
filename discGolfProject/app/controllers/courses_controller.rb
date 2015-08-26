@@ -25,7 +25,7 @@ class CoursesController < ApplicationController
   def delete
     course = Course.find(params[:id])
     course.destroy
-    redirect_to "/courses"
+    redirect_to "/"
   end
 
   private

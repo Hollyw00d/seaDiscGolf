@@ -36,7 +36,7 @@ class UsersController < ApplicationController
   def delete
     user = Course.find(params[:id])
     user.destroy
-    redirect_to "/"
+    redirect_to "/users"
   end
 
   private
