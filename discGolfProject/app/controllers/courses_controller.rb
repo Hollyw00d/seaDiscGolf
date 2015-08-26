@@ -13,9 +13,19 @@ class CoursesController < ApplicationController
   end
 
   def edit
+    @courseEdit = Course.find(params[:id])
+  end
+
+  def update
+    @courseUpdate = Course.find(params[:id])
+    @courseUpdate.save
+    redirect_to "/courses/#{@course.id}"
   end
 
   def delete
+    course = Course.find(params[:id])
+    course.destroy
+    redirect_to "/"
   end
 
   private

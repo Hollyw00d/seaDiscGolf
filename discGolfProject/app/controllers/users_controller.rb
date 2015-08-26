@@ -9,6 +9,7 @@ class UsersController < ApplicationController
     else
       @loggedinUser = User.find(session[:user_id])
     	@user = User.find(params[:id])
+      redirect_to "/users/#{@user.id}"
     end
   end
 
@@ -23,9 +24,19 @@ class UsersController < ApplicationController
   end
 
   def edit
+    @userEdit = Course.find(params[:id])
+  end
+
+  def update
+    @userUpdate = User.find(params[:id])
+    @userUpdate.save
+    redirect_to "/users/#{@user.id}"
   end
 
   def delete
+    user = Course.find(params[:id])
+    user.destroy
+    redirect_to "/users"
   end
 
   private

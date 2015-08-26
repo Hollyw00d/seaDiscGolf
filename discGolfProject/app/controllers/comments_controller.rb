@@ -4,8 +4,20 @@ class CommentsController < ApplicationController
 		redirect_to "/courses/#{@comment.course_id}"
 	end
 
+	def edit
+		@commentEdit = Comment.find(params[:id])
+	end
+
+	def update
+		@commentUpdate = Comment.find(params[:id])
+    	@commentUpdate.save
+    	redirect_to "/courses/#{@comment.course_id}"
+	end
+
 	def delete
-		
+		comment = Comment.find(params[:id])
+    	comment.destroy
+    	redirect_to "/courses/#{@comment.course_id}"
 	end
 
 	private
