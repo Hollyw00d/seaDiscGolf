@@ -20,9 +20,9 @@ Rails.application.routes.draw do
   # COURSES ROUTES
   get '/' => 'courses#index'
 
-  post 'courses' => 'courses#create'
-
   get 'courses/:id' => 'courses#show'
+
+  post 'courses' => 'courses#create'
 
   get 'courses/edit' => 'course#edit'
 
