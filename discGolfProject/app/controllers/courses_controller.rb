@@ -7,8 +7,11 @@ class CoursesController < ApplicationController
   	@course = Course.find(params[:id])
   end
 
+  def new
+  end
+
   def create
-  	@course = Course.new(course_params)
+  	@course = Course.create(course_params)
   	redirect_to "/courses/#{@course.id}"
   end
 
@@ -30,6 +33,6 @@ class CoursesController < ApplicationController
 
   private
   	def course_params
-  		params.require(:course).permit(:name,:street,:state,:zip_code,:google_map)
+  		params.require(:course).permit(:name,:street,:city,:state,:zip_code,:google_map)
   	end
 end

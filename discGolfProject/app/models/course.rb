@@ -1,5 +1,5 @@
 class Course < ActiveRecord::Base
-  has_many :comments, through: :users, dependent: :destroy
+  has_many :comments,  dependent: :destroy
   validates :name, presence:true
   validates :street, presence:true
   validates :state, presence:true

@@ -1,6 +1,8 @@
 class CommentsController < ApplicationController
 	def create
-		@comment = Comment.new(comment_params)
+		@user= User.find(session[:user_id])
+		@course = Course.find(params[:course_id])
+		@comment = Comment.create(comment_params)
 		redirect_to "/courses/#{@comment.course_id}"
 	end
 

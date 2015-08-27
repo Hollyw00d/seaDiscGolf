@@ -5,7 +5,19 @@ Rails.application.routes.draw do
 
   post 'users' => 'users#create'
 
+  get 'users/new' => 'users#new'
+
+  get 'users/login' => 'users#login'
+  # shows user login page
+
+  post 'users/login' => 'users#userLogin'
+  # logs in a user
+
+  post 'users/logout' => 'users#logout'
+  # logs out a user
+
   get 'users/:id' => 'users#show'
+  # shows a single users profile page
 
   get 'users/edit/:id' => 'users#edit'
 
@@ -19,10 +31,16 @@ Rails.application.routes.draw do
 
   # COURSES ROUTES
   get '/' => 'courses#index'
+  # shows all courses
+
+  get 'courses/new' => 'courses#new'
+  # shows page to add courses
 
   get 'courses/:id' => 'courses#show'
+  # shows a single courses page/profile
 
-  post 'courses' => 'courses#create'
+  post 'courses/new' => 'courses#create'
+  # creates a new course
 
   get 'courses/edit' => 'course#edit'
 

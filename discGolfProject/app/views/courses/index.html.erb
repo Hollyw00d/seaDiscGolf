@@ -1,2 +1,4 @@
-<h1>Courses#index</h1>
-<p>Find me in app/views/courses/index.html.erb</p>
+<h1>All courses</h1>
+<% @courses.each do |c| %>
+		<p><%= c.name %>: <%= c.city %>,<%= c.state %></p>
+<% end %>
