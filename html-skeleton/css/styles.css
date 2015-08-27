@@ -1,5 +1,15 @@
 /****** General ******/
+.wrapper {
+    display: block;
+    min-width: 920px;
+    padding: 20px;
+    margin: 0 auto;
+}
 
+.responsive-images img {
+    width: 100%;
+    height: auto;
+}
 
 /****** Navigation ******/
 nav {
@@ -54,6 +64,18 @@ nav a:hover.current, nav a:active.current {
 a:hover#logo, a:active#logo {
     background: url(../images/logo.gif) no-repeat bottom left;
 }
+
+.row {
+    margin: 0 !important;
+}
+
+/****** Home (list of courses) ******/
+#course-list {
+    overflow-x: auto;
+    display: block;
+    border-collapse: collapse;
+}
+
 
 /****** Media Query for iPads and Smaller Devices ******/
 @media only screen and (max-width: 768px){
