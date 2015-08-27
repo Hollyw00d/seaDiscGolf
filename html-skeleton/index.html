@@ -10,12 +10,6 @@
     <link rel="stylesheet" type="text/css" href="css/footable.core.css" />
     <script type="text/javascript" src="js/jquery.min_v2.1.3.js"></script>
     <script type="text/javascript" src="js/jquery.cycle2.js"></script>
-    <script type="text/javascript" src="js/footable.js"></script>
-    <script type="text/javascript">
-        $(function() {
-            $(".footable").footable();
-        });
-    </script>
 </head>
 <body>
 
@@ -45,16 +39,16 @@
         </div>
     </article>
 
-    <article class="wrapper">
+    <article>
         <div class="container">
             <div class="row">
-                <div class="span12 table-responsive">
+                <div class="span12">
                     <table id="course-list">
                         <thead>
                             <tr>
                                 <th>Course</th>
                                 <th>Total Comments</th>
-                                <th>Latest Comment</th>
+                                <th class="tablet-hide">Latest Comment</th>
                             </tr>
                         </thead>
                         <tbody>
@@ -67,7 +61,7 @@
                                 <td>
                                     <h2><a href="#">29</a></h2>
                                 </td>
-                                <td>
+                                <td class="tablet-hide">
                                     <h2>Cobra Rojo</h2>
                                     <p><a href="#">No alcohol allowed. But that hasn't stopped...</a></p>
                                 </td>
@@ -81,7 +75,7 @@
                                 <td>
                                     <h2><a href="#">15</a></h2>
                                 </td>
-                                <td>
+                                <td class="tablet-hide">
                                     <h2>High Flyer</h2>
                                     <p><a href="#">Park is closed from July 24 to August 31...</a></p>
                                 </td>
@@ -95,7 +89,7 @@
                                 <td>
                                     <h2><a href="#">5</a></h2>
                                 </td>
-                                <td>
+                                <td class="tablet-hide">
                                     <h2>Cat Whisperer</h2>
                                     <p><a href="#">Summit course closes Sept. 23rd so come soon...</a></p>
                                 </td>
@@ -111,10 +105,8 @@
 </section>
 
 <footer>
-
-
+    <p>&copy;2015 Joe Klinck and Matt Jennings. All rights reserved.</p>
 </footer>
-
 
 </body>
 </html>
