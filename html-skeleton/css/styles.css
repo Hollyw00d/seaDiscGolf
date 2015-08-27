@@ -1,4 +1,33 @@
 /****** General ******/
+body {
+    font: normal 14px/22px Helvetica, Arial, sans-serif;
+}
+
+h2 {
+    color: #006633;
+    font-size: 22px;
+}
+
+a:link, a:visited {
+    color: #006633;
+    text-decoration: none;
+}
+
+a:hover, a:active {
+    color: #006633;
+    text-decoration: underline;
+}
+
+p a:link, p a:visited {
+    border: 2px dotted #006633;
+    border-width: 0 0 2px 0;
+}
+
+p a:hover, p a:active {
+    border-width: 0;
+    text-decoration: none;
+}
+
 .wrapper {
     display: block;
     min-width: 920px;
@@ -74,15 +103,39 @@ a:hover#logo, a:active#logo {
     border-collapse: collapse;
 }
 
-
-/****** Media Query for iPads and Smaller Devices ******/
-/****** General ******/
-.tablet-hide {
-    display: none;
+#course-list th {
+    vertical-align: top;
+    font-size: 22px;
+    padding: 10px;
 }
 
-/****** Navigation ******/
+#course-list td {
+    vertical-align: top;
+    padding: 10px;
+}
+
+#course-list thead tr {
+    color: #fff;
+    background: #000;
+}
+
+#course-list tbody tr:nth-child(odd) {
+    background: #B0B0B0;
+}
+
+#course-list tbody tr:nth-child(even) {
+    background: #ccc;
+}
+
+
+/****** Media Query for iPads and Smaller Devices ******/
 @media only screen and (max-width: 768px){
+    /****** General ******/
+    .tablet-hide {
+        display: none;
+    }
+
+    /****** Navigation ******/
     nav ul {
         width: 100px;
     }
