@@ -4,6 +4,7 @@ class CoursesController < ApplicationController
   end
 
   def show
+    @user = User.find(session[:user_id])
   	@course = Course.find(params[:id])
   end
 
