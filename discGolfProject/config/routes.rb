@@ -21,7 +21,7 @@ Rails.application.routes.draw do
 
   get 'users/edit/:id' => 'users#edit'
 
-  patch 'users/edit/:id' => 'users#update'
+  patch 'users/:id' => 'users#update'
 
   delete 'users/:id' => 'users#delete'
 
@@ -42,11 +42,11 @@ Rails.application.routes.draw do
   post 'courses/new' => 'courses#create'
   # creates a new course
 
-  get 'courses/edit' => 'course#edit'
+  get 'courses/edit/:id' => 'courses#edit'
 
-  patch 'courses/edit' => 'course#update'
+  patch 'courses/:id' => 'courses#update'
 
-  delete 'courses/delete' => 'courses#delete'
+  delete 'courses/:id' => 'courses#delete'
 
 
 
@@ -57,7 +57,7 @@ Rails.application.routes.draw do
 
   get 'comments/edit/:id' => 'comments#edit'
 
-  patch 'comments/edit/:id' => 'comments#update'
+  patch 'comments/:id' => 'comments#update'
 
   delete 'comments/:id' => 'comments#delete'
 

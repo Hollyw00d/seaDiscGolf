@@ -45,19 +45,21 @@ class UsersController < ApplicationController
   end
 
   def edit
-    @userEdit = Course.find(params[:id])
+    @user = User.find(params[:id])
   end
 
   def update
-    @userUpdate = User.find(params[:id])
-    @userUpdate.save
+    @user = User.find(params[:id])
+    @user.update(user_params)
     redirect_to "/users/#{@user.id}"
   end
 
   def delete
-    user = Course.find(params[:id])
-    user.destroy
-    redirect_to "/users"
+    @user = User.find(params[:id])
+    @user.first_name = params[:first_name]
+    @user.destroy
+    session[:user_id] = nil
+    redirect_to "/"
   end
 
   private

@@ -17,18 +17,18 @@ class CoursesController < ApplicationController
   end
 
   def edit
-    @courseEdit = Course.find(params[:id])
+    @course = Course.find(params[:id])
   end
 
   def update
-    @courseUpdate = Course.find(params[:id])
-    @courseUpdate.save
+    @course = Course.find(params[:id])
+    @course.update(course_params)
     redirect_to "/courses/#{@course.id}"
   end
 
   def delete
-    course = Course.find(params[:id])
-    course.destroy
+    @course = Course.find(params[:id])
+    @course.destroy
     redirect_to "/"
   end
 

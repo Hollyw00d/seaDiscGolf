@@ -7,12 +7,14 @@ class CommentsController < ApplicationController
 	end
 
 	def edit
-		@commentEdit = Comment.find(params[:id])
+		@comment = Comment.find(params[:id])
+		@user = @comment.user
+		@course = @comment.course
 	end
 
 	def update
-		@commentUpdate = Comment.find(params[:id])
-    	@commentUpdate.save
+		@comment = Comment.find(params[:id])
+    	@comment.update(comment_params)
     	redirect_to "/courses/#{@comment.course_id}"
 	end
 

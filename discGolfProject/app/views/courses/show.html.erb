@@ -1,5 +1,16 @@
 <h1>Course profile</h1>
 	<%= @course.name %>
+<!-- edit the course -->
+<p>
+	<a href="/courses/edit/<%= @course.id %>">Edit this course</a>
+</p>
+
+<!-- delete the course -->
+<form action="/courses/<%= @course.id %>" method="post">
+	<input type="hidden" name="_method" value="delete">
+	<input type="hidden" name="authenticity_token" value="<%= form_authenticity_token %>">
+	<input type="submit" value="Delete this course">
+</form> 
 <hr>
 
 <h2>Submit a comment about this course</h2>
@@ -16,4 +27,20 @@
 <h2>Comments about this course</h2>
 	<% @course.comments.each do |c| %>
 		<p><%= c.content %></p>
+		<p>
+			<a href="/comments/edit/<%= c.id %>">Edit this comment</a>
+		</p>
+		<form action="/comments/<%= c.id %>" method="post">
+			<input type="hidden" name="_method" value="delete">
+			<input type="hidden" name="authenticity_token" value="<%= form_authenticity_token %>">
+			<input type="submit" value="Delete this comment">
+		</form>
 	<% end %>
+
+
+
+
+
+
+
+<!--  -->
