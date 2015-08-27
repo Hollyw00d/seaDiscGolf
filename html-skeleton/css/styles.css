@@ -51,7 +51,6 @@ nav a:hover.current, nav a:active.current {
     color: #98c448;
 }
 
-/*<img src="images/logo.gif" width="140" height="200" alt="Seattle Disc Golf" />*/
 #logo {
     display: inline-block;
     background: url(../images/logo.gif) no-repeat top left;
@@ -71,13 +70,18 @@ a:hover#logo, a:active#logo {
 
 /****** Home (list of courses) ******/
 #course-list {
-    overflow-x: auto;
-    display: block;
+    width: 100%;
     border-collapse: collapse;
 }
 
 
 /****** Media Query for iPads and Smaller Devices ******/
+/****** General ******/
+.tablet-hide {
+    display: none;
+}
+
+/****** Navigation ******/
 @media only screen and (max-width: 768px){
     nav ul {
         width: 100px;
