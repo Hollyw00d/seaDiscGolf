@@ -3,6 +3,10 @@ body {
     font: normal 14px/22px Helvetica, Arial, sans-serif;
 }
 
+h1 {
+    color: #006633;
+}
+
 h2 {
     color: #006633;
     font-size: 22px;
@@ -127,6 +131,24 @@ a:hover#logo, a:active#logo {
     background: #ccc;
 }
 
+/****** Google Map ******/
+.flexible-container {
+    position: relative;
+    padding-bottom: 35%;
+    padding-top: 30px;
+    height: 0;
+    overflow: hidden;
+}
+
+.flexible-container iframe,
+.flexible-container object,
+.flexible-container embed {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100% !important;
+    height: 100% !important;
+}
 
 /****** Media Query for iPads and Smaller Devices ******/
 @media only screen and (max-width: 768px){
