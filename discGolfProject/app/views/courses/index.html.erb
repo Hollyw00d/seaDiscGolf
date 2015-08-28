@@ -4,7 +4,7 @@
 <h1>All courses</h1>
 <% @courses.each do |c| %>
 		<p><%= c.name %>: <%= c.city %>,<%= c.state %></p>
-		<p>Latest comment: <%= c.comments.last.content%></p>
-		<p>Total comments: <%= c.comments.count %></p>
+			<p>Latest comment: <%= c.comments.last.content%></p>
+			<p>Total comments: <%= c.comments.count %></p>
 		<hr>
 <% end %>

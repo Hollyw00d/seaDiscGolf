@@ -22,7 +22,6 @@ class CoursesController < ApplicationController
   end
 
   def create
-    puts comment
   	@course = Course.create(course_params)
   	redirect_to "/courses/#{@course.id}"
   end
