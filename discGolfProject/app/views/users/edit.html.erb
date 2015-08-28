@@ -26,3 +26,24 @@
 		</p>
 		<input type="submit" value="Edit/Update user">
 	</form>
+
+
+<h1>User profile</h1>
+<p><%= @user.first_name %> <%= @user.last_name %></p>
+
+<a href="/users/edit/<%= @user.id %>">Edit your profile</a>
+
+<!-- delete users profile -->
+<h2>Delete your profile</h2>
+<form action="/users/<%= @user.id %>" method="post">
+  <input type="hidden" name="_method" value="delete">
+  <input type="hidden" name="authenticity_token" value="<%= form_authenticity_token %>">
+  <input type="submit" value="Delete your profile">
+</form>
+<br></br>
+
+<!-- log out a user -->
+<form action="/users/logout" method="post">
+  <input type="hidden" name="authenticity_token" value="<%= form_authenticity_token %>">
+  <input type="submit" value="log out">
+</form>
