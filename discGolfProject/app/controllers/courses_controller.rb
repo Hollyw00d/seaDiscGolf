@@ -37,6 +37,8 @@ class CoursesController < ApplicationController
     if session[:user_id]
       @user = User.find(session[:user_id])
       @users = User.all
+    else
+      redirect_to "/"
     end
   end
 

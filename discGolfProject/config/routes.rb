@@ -49,9 +49,6 @@ Rails.application.routes.draw do
   delete 'courses/:id' => 'courses#delete'
 
 
-
-
-
   # COMMENTS ROUTES
   post 'comments' => 'comments#create'
 

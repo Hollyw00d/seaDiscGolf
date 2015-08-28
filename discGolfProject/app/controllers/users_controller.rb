@@ -40,7 +40,7 @@ class UsersController < ApplicationController
       session[:user_type] = user.user_type
       redirect_to "/users/#{user.id}"
     else
-      redirect_to "/users"
+      redirect_to "/users/login"
     end
   end
 

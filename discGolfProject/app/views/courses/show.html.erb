@@ -14,14 +14,6 @@ end %>
 <section>
 	<article>
 	  <div class="container">
-		  <div class="row">
-			<div class="col-md-12">
-			  <% if session[:user_id] %>
-				  <p><strong>Logged in user: </strong><%= @user.first_name %> <%=@user.last_name %></p>
-			  <% end %>
-
-			</div>
-		  </div>
 
 		  <div class="row">
 			<div class="col-md-12">
@@ -37,64 +29,52 @@ end %>
 				  <%= @course.street %><br />
 				  <%= @course.city %>, <%=  @course.state %> <%=  @course.zip_code %>
 				</p>
+
+				<% if session[:user_id] && session[:user_type] == "admin" %>
+			  		<h2><a href="/courses/edit/<%=  @course.id %>">Edit Course</a></h2>
+				<% end %>
 			</div>
 
 			<div class="col-md-6 comments">
 				<h2>Comments</h2>
-				<% @course.comments.each do |comment| %>
+				<% @course.comments.reverse_each do |comment| %>
 					<p>
 						<span class="name"><%=  comment.user.first_name %></span><br />
-						<%= comment.content %>
+						<%= comment.content %><br />
+						<% if session[:user_id] == comment.user_id %>
+							<form action="/comments/<%= comment.id %>" method="post">
+								<input type="hidden" name="_method" value="delete">
+								<input type="hidden" name="authenticity_token" value="<%= form_authenticity_token %>">
+								<input type="submit" value="Delete">
+							</form>
+
+					  		<form action="/comments/edit/<%= comment.id %>" method="get">
+							  <input type="submit" value="Edit" />
+							</form>
+
+
+						<% end %>
+
 					</p>
+
 				<% end %>
+
+			  	<% if session[:user_id] %>
+				  	<h2>New Comment</h2>
+					  <form action="/comments" method="post">
+						<input type="hidden" name="authenticity_token" value="<%= form_authenticity_token %>">
+						<% if session[:user_id] %>
+							<input type="hidden" name="comment[user_id]" value="<%= @user.id %>">
+						<% end %>
+						<input type="hidden" name="comment[course_id]" value="<%= @course.id %>">
+						<textarea name="comment[content]"></textarea>
+						<br></br>
+						<input type="submit" value="Submit a comment">
+					  </form>
+			  	<% end %>
+
 			</div>
 		  </div>
-	  </div>
-
-	  <div class="container">
-		<div class="col-md-12">
-
-		  <p>
-			<a href="/courses/edit/<%= @course.id %>">Edit this course</a>
-		  </p>
-
-		  <!-- delete the course -->
-		  <form action="/courses/<%= @course.id %>" method="post">
-			<input type="hidden" name="_method" value="delete">
-			<input type="hidden" name="authenticity_token" value="<%= form_authenticity_token %>">
-			<input type="submit" value="Delete this course">
-		  </form>
-
-		  <h2>Submit a comment about this course</h2>
-		  <form action="/comments" method="post">
-			<input type="hidden" name="authenticity_token" value="<%= form_authenticity_token %>">
-			<% if session[:user_id] %>
-				<input type="hidden" name="comment[user_id]" value="<%= @user.id %>">
-			<% end %>
-			<input type="hidden" name="comment[course_id]" value="<%= @course.id %>">
-			<textarea name="comment[content]"></textarea>
-			<br></br>
-			<input type="submit" value="Submit a comment">
-		  </form>
-
-		  <hr>
-		  <h2>Comments about this course</h2>
-
-		  <% @course.comments.each do |c| %>
-			  <p><%= c.content %></p>
-			  <p>
-				<a href="/comments/edit/<%= c.id %>">Edit this comment</a>
-			  </p>
-			  <form action="/comments/<%= c.id %>" method="post">
-				<input type="hidden" name="_method" value="delete">
-				<input type="hidden" name="authenticity_token" value="<%= form_authenticity_token %>">
-				<input type="submit" value="Delete this comment">
-			  </form>
-		  <% end %>
-
-
-		</div>
-
 	  </div>
 
 	</article>

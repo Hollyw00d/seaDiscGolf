@@ -1,6 +1,29 @@
-<% if session[:user_id] %>
-	<p><strong>Logged in user: </strong><%= @loggedInUser.first_name %> <%=@loggedInUser.last_name %></p>
-<% end %>
+<% @title_tag = "Edit Comment" %>
+<% @body_id = "edit-comment" %>
+
+<% # Title tag %>
+<% content_for :head do
+  @title_tag
+end %>
+
+<% # Body tag ID %>
+<% content_for :body_id do
+  @body_id
+end %>
+
+<section>
+	<article>
+		<div class="container">
+
+
+		  
+		</div>
+
+
+	</article>
+
+
+</section>
 
 <!-- edit a comment -->
 <h1>Edit your comment</h1>
