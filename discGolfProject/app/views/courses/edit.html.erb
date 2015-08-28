@@ -1,2 +1,42 @@
-<h1>Courses#edit</h1>
-<p>Find me in app/views/courses/edit.html.erb</p>
+<% if session[:user_id] %>
+	<p><strong>Logged in user: </strong><%= @user.first_name %> <%=@user.last_name %></p>
+<% end %>
+
+<!-- edit a courses info -->
+<h1>Edit this course</h1>
+<form action="/courses/<%= @course.id %>" method="post">
+	<input type="hidden" name="_method" value="patch">
+	<input type="hidden" name="authenticity_token" value="<%= form_authenticity_token %>">
+	<p>
+		<label for="name">Name </label>
+			<input type="" name="course[name]" value="<%= @course.name %>">
+	</p>
+	<p>
+		<label for="street">Street </label>
+		<input type="" name="course[street]" value="<%= @course.street %>">
+	</p>
+	<p>
+		<label for="city">City </label>
+		<input type="" name="course[city]" value="<%= @course.city %>">
+	</p>
+	<p>
+		<label for="state">State </label>
+		<input type="" name="course[state]" value="<%= @course.state %>">
+	</p>
+	<p>
+		<label for="google_map">Zip code </label>
+		<input type="" name="course[zip_code]" value="<%= @course.zip_code %>">
+	</p>
+	<p>
+		<lable for="google_map">Google map </label>
+		<input type="" name="course[google_map]" value="<%= @course.google_map %>">
+	</p>
+	<input type="submit" value="Edit/update this course">
+</form>
+
+
+
+
+
+
+<!--  -->

@@ -1,2 +1,10 @@
-<h1>Courses#index</h1>
-<p>Find me in app/views/courses/index.html.erb</p>
+<% if session[:user_id] %>
+	<p><strong>Logged in user: </strong><%= @user.first_name %> <%=@user.last_name %></p>
+<% end %>
+<h1>All courses</h1>
+<% @courses.each do |c| %>
+		<p><%= c.name %>: <%= c.city %>,<%= c.state %></p>
+			<p>Latest comment: <%= c.comments.last.content%></p>
+			<p>Total comments: <%= c.comments.count %></p>
+		<hr>
+<% end %>
