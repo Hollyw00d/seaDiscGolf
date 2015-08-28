@@ -180,7 +180,8 @@ footer p {
 }
 
 /****** Forms (i.e. user registration, login, etc.) ******/
-#login-register-form input[type=text], #login-register-form input[type=password] {
+#login-register-form input[type=text], #login-register-form input[type=password],
+#login-register-form textarea {
     margin: 0 0 10px;
     width: 60%;
 }
