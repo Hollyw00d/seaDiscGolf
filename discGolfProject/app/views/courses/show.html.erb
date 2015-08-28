@@ -1,52 +1,109 @@
-<% if session[:user_id] %>
-	<p><strong>Logged in user: </strong><%= @user.first_name %> <%=@user.last_name %></p>
-<% end %>
+<% @title_tag = "#{@course.name} Course" %>
+<% @body_id = "show-course" %>
 
-<h1>Course profile</h1>
-	<%= @course.name %>
-<!-- edit the course -->
-<p>
-	<a href="/courses/edit/<%= @course.id %>">Edit this course</a>
-</p>
+<% # Title tag %>
+<% content_for :head do
+  @title_tag
+end %>
 
-<!-- delete the course -->
-<form action="/courses/<%= @course.id %>" method="post">
-	<input type="hidden" name="_method" value="delete">
-	<input type="hidden" name="authenticity_token" value="<%= form_authenticity_token %>">
-	<input type="submit" value="Delete this course">
-</form> 
-<hr>
+<% # Body tag ID %>
+<% content_for :body_id do
+  @body_id
+end %>
 
-<h2>Submit a comment about this course</h2>
-	<form action="/comments" method="post">
-		<input type="hidden" name="authenticity_token" value="<%= form_authenticity_token %>">
-		<% if session[:user_id] %>
-		<input type="hidden" name="comment[user_id]" value="<%= @user.id %>">
-		<% end %>
-		<input type="hidden" name="comment[course_id]" value="<%= @course.id %>">
-		<textarea name="comment[content]"></textarea>
-		<br></br>
-		<input type="submit" value="Submit a comment">
-	</form>
+<section>
+	<article>
+	  <div class="container">
+		  <div class="row">
+			<div class="col-md-12">
+			  <% if session[:user_id] %>
+				  <p><strong>Logged in user: </strong><%= @user.first_name %> <%=@user.last_name %></p>
+			  <% end %>
 
-<hr>
-<h2>Comments about this course</h2>
-	<% @course.comments.each do |c| %>
-		<p><%= c.content %></p>
-		<p>
-			<a href="/comments/edit/<%= c.id %>">Edit this comment</a>
-		</p>
-		<form action="/comments/<%= c.id %>" method="post">
+			</div>
+		  </div>
+
+		  <div class="row">
+			<div class="col-md-12">
+			  <iframe class="google-map" src="<%= @course.google_map %>" width="100%" height="300" frameborder="0" style="border: 0" allowfullscreen></iframe>
+
+			</div>
+		  </div>
+
+		  <div class="row">
+			<div class="col-md-6">
+				<h1><%= @course.name %></h1>
+				<p>
+				  <%= @course.street %><br />
+				  <%= @course.city %>, <%=  @course.state %> <%=  @course.zip_code %>
+				</p>
+			</div>
+
+			<div class="col-md-6 comments">
+				<h2>Comments</h2>
+				<% @course.comments.each do |comment| %>
+					<p>
+						<!--<span class="name">NAME_HERE</span><br />-->
+						<%= comment.content %>
+					</p>
+				<% end %>
+			</div>
+		  </div>
+	  </div>
+
+	  <div class="container">
+		<div class="col-md-12">
+
+		  <p>
+			<a href="/courses/edit/<%= @course.id %>">Edit this course</a>
+		  </p>
+
+		  <!-- delete the course -->
+		  <form action="/courses/<%= @course.id %>" method="post">
 			<input type="hidden" name="_method" value="delete">
 			<input type="hidden" name="authenticity_token" value="<%= form_authenticity_token %>">
-			<input type="submit" value="Delete this comment">
-		</form>
-	<% end %>
+			<input type="submit" value="Delete this course">
+		  </form>
+
+
+
+		  <h2>Submit a comment about this course</h2>
+		  <form action="/comments" method="post">
+			<input type="hidden" name="authenticity_token" value="<%= form_authenticity_token %>">
+			<% if session[:user_id] %>
+				<input type="hidden" name="comment[user_id]" value="<%= @user.id %>">
+			<% end %>
+			<input type="hidden" name="comment[course_id]" value="<%= @course.id %>">
+			<textarea name="comment[content]"></textarea>
+			<br></br>
+			<input type="submit" value="Submit a comment">
+		  </form>
+
+		  <hr>
+		  <h2>Comments about this course</h2>
+
+		  <% @course.comments.each do |c| %>
+			  <p><%= c.content %></p>
+			  <p>
+				<a href="/comments/edit/<%= c.id %>">Edit this comment</a>
+			  </p>
+			  <form action="/comments/<%= c.id %>" method="post">
+				<input type="hidden" name="_method" value="delete">
+				<input type="hidden" name="authenticity_token" value="<%= form_authenticity_token %>">
+				<input type="submit" value="Delete this comment">
+			  </form>
+		  <% end %>
+
+
+		</div>
+
+	  </div>
+
+	</article>
+
+</section>
 
 
 
 
 
-
-
-<!--  -->
