@@ -1,53 +1,92 @@
-<% if session[:user_id] %>
-	<p><strong>Logged in user: </strong><%= @user.first_name %> <%=@user.last_name %></p>
-<% end %>
+<% @title_tag = "Edit #{@course.name} Course" %>
+<% @body_id = "edit-course" %>
 
-<!-- edit a courses info -->
-<h1>Edit this course</h1>
-<form action="/courses/<%= @course.id %>" method="post">
-	<input type="hidden" name="_method" value="patch">
-	<input type="hidden" name="authenticity_token" value="<%= form_authenticity_token %>">
-	<p>
-		<label for="name">Name </label>
-			<input type="" name="course[name]" value="<%= @course.name %>">
-	</p>
-	<p>
-		<label for="street">Street </label>
-		<input type="" name="course[street]" value="<%= @course.street %>">
-	</p>
-	<p>
-		<label for="city">City </label>
-		<input type="" name="course[city]" value="<%= @course.city %>">
-	</p>
-	<p>
-		<label for="state">State </label>
-		<input type="" name="course[state]" value="<%= @course.state %>">
-	</p>
-	<p>
-		<label for="google_map">Zip code </label>
-		<input type="" name="course[zip_code]" value="<%= @course.zip_code %>">
-	</p>
-	<p>
-		<lable for="google_map">Google map </label>
-		<input type="" name="course[google_map]" value="<%= @course.google_map %>">
-	</p>
-	<input type="submit" value="Edit/update this course">
-</form>
-
-<p>
-  <a href="/courses/edit/<%= @course.id %>">Edit this course</a>
-</p>
-
-<!-- delete the course -->
-<form action="/courses/<%= @course.id %>" method="post">
-  <input type="hidden" name="_method" value="delete">
-  <input type="hidden" name="authenticity_token" value="<%= form_authenticity_token %>">
-  <input type="submit" value="Delete this course">
-</form>
+<% # Title tag %>
+<% content_for :head do
+  @title_tag
+end %>
 
 
+<section>
+  <article>
+	<div class="container narrow">
+	  <div class="row">
+		<div class="col-md-12">
+		  <h1>Edit <%= @course.name %> Course</h1>
+		</div>
+	  </div>
 
+	  <div class="row">
+		<form id="login-register-form" action="/courses/<%= @course.id %>" method="post">
+			<input type="hidden" name="_method" value="patch">
+			<input type="hidden" name="authenticity_token" value="<%= form_authenticity_token %>">
 
+		  <div class="col-md-2">
+			<label for="first_name">Name</label>
+		  </div>
+		  <div class="col-md-10">
+			<input type="text" name="course[name]" value="<%= @course.name %>">
+		  </div>
 
+		  <div class="col-md-2">
+			<label for="street">Street</label>
+		  </div>
+		  <div class="col-md-10">
+			<input type="text" name="course[street]" value="<%= @course.street %>">
+		  </div>
 
-<!--  -->
+		  <div class="col-md-2">
+			<label for="city">City</label>
+		  </div>
+		  <div class="col-md-10">
+			<input type="text" name="course[city]" value="<%= @course.city %>">
+		  </div>
+
+		  <div class="col-md-2">
+			<label for="city">State</label>
+		  </div>
+		  <div class="col-md-10">
+			<input type="text" name="course[state]" value="<%= @course.state %>">
+		  </div>
+
+		  <div class="col-md-2">
+			<label for="zip_code">Zip Code</label>
+		  </div>
+		  <div class="col-md-10">
+			<input type="text" name="course[zip_code]" value="<%= @course.zip_code %>">
+		  </div>
+
+		  <div class="col-md-2">
+			<label for="google_map">Google Map Link</label>
+		  </div>
+		  <div class="col-md-10">
+			<input type="text" name="course[google_map]" value="<%= @course.google_map %>">
+		  </div>
+
+		  <div class="col-md-10 col-md-offset-2">
+			<input type="submit" value="Update Course" />
+		  </div>
+
+		</form>
+
+	  </div>
+
+	  <div class="row">
+		<div class="col-md-12">
+		  <p>&nbsp;</p>
+		</div>
+	  </div>
+
+	  <div class="row">
+		<div class="col-md-10 col-md-offset-2">
+		  <form id="login-register-form" action="/courses/<%= @course.id %>" method="post">
+			<input type="hidden" name="_method" value="delete">
+			<input type="hidden" name="authenticity_token" value="<%= form_authenticity_token %>">
+			<input type="submit" value="Delete this course">
+		  </form>
+		</div>
+	  </div>
+
+	</div>
+  </article>
+</section>

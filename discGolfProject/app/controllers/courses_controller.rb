@@ -32,7 +32,7 @@ class CoursesController < ApplicationController
   end
 
   def edit
-    @courseEdit = Course.find(params[:id])
+    @course = Course.find(params[:id])
 
     if session[:user_id]
       @user = User.find(session[:user_id])
@@ -43,8 +43,8 @@ class CoursesController < ApplicationController
   end
 
   def update
-    @courseUpdate = Course.find(params[:id])
-    @courseUpdate.save
+    @course = Course.find(params[:id])
+    @course.update(course_params)
     redirect_to "/courses/#{@course.id}"
   end
 
