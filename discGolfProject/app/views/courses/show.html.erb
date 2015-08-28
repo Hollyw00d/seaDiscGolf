@@ -32,6 +32,7 @@ end %>
 
 				<% if session[:user_id] && session[:user_type] == "admin" %>
 			  		<h2><a href="/courses/edit/<%=  @course.id %>">Edit Course</a></h2>
+				  	<h2><a href="/courses/new">Add New Course</a></h2>
 				<% end %>
 			</div>
 
