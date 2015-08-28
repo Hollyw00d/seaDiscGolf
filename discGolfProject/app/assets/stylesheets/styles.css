@@ -80,8 +80,13 @@ nav a:hover, nav a:active {
     text-decoration: none;
 }
 
-nav a:link.current, nav a:visited.current,
-nav a:hover.current, nav a:active.current {
+#home nav a#home-nav:link, #home nav a#home-nav:visited,
+#home nav a#home-nav:hover, #home nav a#home-nav:active {
+    color: #98c448;
+}
+
+#user-register nav a#register-nav:link, #user-register nav a#register-nav:visited,
+#user-register nav a#register-nav:hover, #user-register nav a#register-nav:active {
     color: #98c448;
 }
 

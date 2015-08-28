@@ -43,7 +43,7 @@ end %>
 				<h2>Comments</h2>
 				<% @course.comments.each do |comment| %>
 					<p>
-						<!--<span class="name">NAME_HERE</span><br />-->
+						<span class="name"><%=  comment.user.first_name %></span><br />
 						<%= comment.content %>
 					</p>
 				<% end %>
@@ -64,8 +64,6 @@ end %>
 			<input type="hidden" name="authenticity_token" value="<%= form_authenticity_token %>">
 			<input type="submit" value="Delete this course">
 		  </form>
-
-
 
 		  <h2>Submit a comment about this course</h2>
 		  <form action="/comments" method="post">
