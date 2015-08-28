@@ -3,12 +3,18 @@ class UsersController < ApplicationController
       if session[:user_id] && session[:user_type]=="admin"
         @user = User.find(session[:user_id])
         @users = User.all
+
+        redirect_to "/users/#{@user.id}"
       else
-        redirect_to '/'
-    end
+        @user = User.find(session[:user_id])
+        redirect_to "/users/#{@user.id}"
+      end
   end
 
   def new
+    if session[:user_id]
+      redirect_to "/"
+    end
   end
 
   def show
@@ -21,6 +27,9 @@ class UsersController < ApplicationController
   end
 
   def login
+    if session[:user_id]
+      redirect_to "/"
+    end
   end
 
   def userLogin
@@ -31,7 +40,7 @@ class UsersController < ApplicationController
       session[:user_type] = user.user_type
       redirect_to "/users/#{user.id}"
     else
-      redirect_to "/users"
+      redirect_to "/users/login"
     end
   end
 
@@ -51,6 +60,9 @@ class UsersController < ApplicationController
   end
 
   def edit
+    unless session[:user_id]
+      redirect_to "/"
+    end
     @user = User.find(params[:id])
   end
 

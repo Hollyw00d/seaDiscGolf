@@ -1,23 +1,28 @@
 class CoursesController < ApplicationController
   def index
+    @courses = Course.all
+
     if session[:user_id]
       @user = User.find(session[:user_id])
+      @users = User.all
     end
-    @courses = Course.all
   end
 
   def show
+  	@course = Course.find(params[:id])
+
     if session[:user_id]
       @user = User.find(session[:user_id])
+      @users = User.all
     end
-  	@course = Course.find(params[:id])
   end
 
   def new
     if session[:user_id]
       @user = User.find(session[:user_id])
+      @users = User.all
     else
-      redirect_to '/'
+      redirect_to "/"
     end
   end
 
@@ -27,10 +32,14 @@ class CoursesController < ApplicationController
   end
 
   def edit
+    @course = Course.find(params[:id])
+
     if session[:user_id]
       @user = User.find(session[:user_id])
+      @users = User.all
+    else
+      redirect_to "/"
     end
-    @course = Course.find(params[:id])
   end
 
   def update
@@ -40,13 +49,13 @@ class CoursesController < ApplicationController
   end
 
   def delete
-    @course = Course.find(params[:id])
-    @course.destroy
+    course = Course.find(params[:id])
+    course.destroy
     redirect_to "/"
   end
 
   private
   	def course_params
-  		params.require(:course).permit(:name,:street,:city,:state,:zip_code,:google_map)
+  		params.require(:course).permit(:name,:street,:state,:city,:zip_code,:google_map)
   	end
 end

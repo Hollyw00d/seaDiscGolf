@@ -1,28 +1,77 @@
-<!-- edit a users profile -->
-<h2>Edit your profile</h2>
-	<form action="/users/<%= @user.id %>" method="post">
-		<input type="hidden" name="_method" value="patch">
-		<input type="hidden" name="authenticity_token" value="<%= form_authenticity_token %>">
-		<p>
-			<label for="first_name">First name </label>
+<% @title_tag = "Edit #{@user.first_name} #{@user.last_name} User Profile" %>
+<% @body_id = "user-profile-edit" %>
+
+<% # Title tag %>
+<% content_for :head do
+  @title_tag
+end %>
+
+<section>
+  <article>
+	<div class="container narrow">
+	  <div class="row">
+		<div class="col-md-12">
+		  <h1>Edit <%= @user.first_name %> <%= @user.last_name %> User Profile</h1>
+		</div>
+	  </div>
+
+
+	  <div class="row">
+		<form id="login-register-form" action="/users/<%= @user.id %>" method="post">
+		  <input type="hidden" name="authenticity_token" value="<%= form_authenticity_token %>">
+		  <input type="hidden" name="_method" value="patch">
+		  <% if @user.user_type == 'admin' %>
+			  <input type="hidden" name="user[user_type]" value="admin">
+		  <% else %>
+			  <input type="hidden" name="user[user_type]" value="regular">
+		  <% end %>
+
+		  <div class="col-md-2">
+			<label for="first_name">First Name</label>
+		  </div>
+		  <div class="col-md-10">
 			<input type="text" name="user[first_name]" value="<%=@user.first_name%>">
-		</p>
-		<p>
-			<label for="last_name">Last name </label>
+		  </div>
+
+		  <div class="col-md-2">
+			<label for="last_name">Last Name</label>
+		  </div>
+		  <div class="col-md-10">
 			<input type="text" name="user[last_name]" value="<%=@user.last_name%>">
-		</p>
-		<p>
-			<label for="email">Email </label>
+		  </div>
+
+		  <div class="col-md-2">
+			<label for="email">Email</label>
+		  </div>
+		  <div class="col-md-10">
 			<input type="text" name="user[email]" value="<%=@user.email%>">
-		</p>
-		<% if @user.user_type == 'admin' %>
-			<input type="hidden" name="user[user_type]" value="admin">
-		<% else %>
-			<input type="hidden" name="user[user_type]" value="regular">
-		<% end %>
-		<p>
-			<label for="password">New password </label>
-			<input type="password" name="user[password]">
-		</p>
-		<input type="submit" value="Edit/Update user">
-	</form>
+		  </div>
+
+		  <div class="col-md-2">
+			<label for="password">New Password</label>
+		  </div>
+		  <div class="col-md-10">
+			<input type="password" name="user[password]" />
+		  </div>
+
+		  <div class="col-md-10 col-md-offset-2">
+			<input type="submit" value="Update Profile" />
+		  </div>
+		</form>
+
+		<div clas="col-md-12">
+		  <p>&nbsp;</p>
+		</div>
+
+		<div class="col-md-10 col-md-offset-2">
+		  <form id="login-register-form" action="/users/<%= @user.id %>" method="post">
+			<input type="hidden" name="_method" value="delete">
+			<input type="hidden" name="authenticity_token" value="<%= form_authenticity_token %>">
+			<input type="submit" value="Delete Profile">
+		  </form>
+		</div>
+	  </div>
+
+	</div>
+  </article>
+</section>
