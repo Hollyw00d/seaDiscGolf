@@ -1,6 +1,11 @@
 class UsersController < ApplicationController
   def index
-    @users = User.all
+      if session[:user_id] && session[:user_type]=="admin"
+        @user = User.find(session[:user_id])
+        @users = User.all
+      else
+        redirect_to '/'
+    end
   end
 
   def new
@@ -23,6 +28,7 @@ class UsersController < ApplicationController
     if user && user.authenticate(params[:password])
       # session[:user_id] = user.user_id
       session[:user_id] = user.id
+      session[:user_type] = user.user_type
       redirect_to "/users/#{user.id}"
     else
       redirect_to "/users"

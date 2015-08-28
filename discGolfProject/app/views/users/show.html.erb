@@ -1,3 +1,7 @@
+<% if session[:user_id] %>
+	<p><strong>Logged in user: </strong><%= @user.first_name %> <%=@user.last_name %></p>
+<% end %>
+
 <h1>User profile</h1>
 <p><%= @user.first_name %> <%= @user.last_name %></p>
 
@@ -17,3 +21,4 @@
 	<input type="hidden" name="authenticity_token" value="<%= form_authenticity_token %>">
 	<input type="submit" value="log out">
 </form>
+

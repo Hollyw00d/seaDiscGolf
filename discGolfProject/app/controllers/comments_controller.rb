@@ -7,6 +7,9 @@ class CommentsController < ApplicationController
 	end
 
 	def edit
+		if session[:user_id]
+      		@loggedInUser = User.find(session[:user_id])
+    	end
 		@comment = Comment.find(params[:id])
 		@user = @comment.user
 		@course = @comment.course

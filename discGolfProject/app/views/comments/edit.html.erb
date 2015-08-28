@@ -1,3 +1,7 @@
+<% if session[:user_id] %>
+	<p><strong>Logged in user: </strong><%= @loggedInUser.first_name %> <%=@loggedInUser.last_name %></p>
+<% end %>
+
 <!-- edit a comment -->
 <h1>Edit your comment</h1>
 <form action="/comments/<%= @comment.id %>" method="post">
