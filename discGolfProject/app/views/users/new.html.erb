@@ -1,4 +1,4 @@
-<% @title_tag = "User Registration Form" %>
+<% @title_tag = "New User Registration" %>
 <% @body_id = "user-register" %>
 
 <% # Title tag %>
@@ -25,6 +25,7 @@ end %>
 			<form id="login-register-form" action="/users" method="post">
 			  <input type="hidden" name="authenticity_token" value="<%= form_authenticity_token %>">
 			  <input type="hidden" name="user[user_type]" value="regular" />
+
 			  <div class="col-md-2">
 				<label for="first_name">First Name</label>
 			  </div>

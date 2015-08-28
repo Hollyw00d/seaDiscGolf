@@ -45,6 +45,10 @@ p a:hover, p a:active {
     height: auto;
 }
 
+.light-gray {
+    color: #ccc;
+}
+
 /****** Navigation and Header ******/
 nav {
     background: #333;
@@ -88,6 +92,14 @@ nav a:hover, nav a:active {
 #user-register nav a#register-nav:link, #user-register nav a#register-nav:visited,
 #user-register nav a#register-nav:hover, #user-register nav a#register-nav:active {
     color: #98c448;
+}
+
+nav #sign-out-form input {
+    line-height: 25px;
+    border-radius: 5px;
+    -moz-border-radius: 5px;
+    -o-border-radius: 5px;
+    -webkit-border-radius: 5px;
 }
 
 #logo {

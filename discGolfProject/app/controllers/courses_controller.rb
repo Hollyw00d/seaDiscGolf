@@ -1,10 +1,29 @@
 class CoursesController < ApplicationController
   def index
     @courses = Course.all
+
+    if session[:user_id]
+      @user = User.find(session[:user_id])
+      @users = User.all
+    end
   end
 
   def show
   	@course = Course.find(params[:id])
+
+    if session[:user_id]
+      @user = User.find(session[:user_id])
+      @users = User.all
+    end
+  end
+
+  def new
+    if session[:user_id]
+      @user = User.find(session[:user_id])
+      @users = User.all
+    else
+      redirect_to "/"
+    end
   end
 
   def create
@@ -14,6 +33,11 @@ class CoursesController < ApplicationController
 
   def edit
     @courseEdit = Course.find(params[:id])
+
+    if session[:user_id]
+      @user = User.find(session[:user_id])
+      @users = User.all
+    end
   end
 
   def update
