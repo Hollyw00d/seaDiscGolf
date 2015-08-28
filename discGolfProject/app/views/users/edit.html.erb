@@ -4,19 +4,21 @@
 		<input type="hidden" name="_method" value="patch">
 		<input type="hidden" name="authenticity_token" value="<%= form_authenticity_token %>">
 		<p>
+			<label for="first_name">First name </label>
 			<input type="text" name="user[first_name]" value="<%=@user.first_name%>">
 		</p>
 		<p>
+			<label for="last_name">Last name </label>
 			<input type="text" name="user[last_name]" value="<%=@user.last_name%>">
 		</p>
 		<p>
+			<label for="email">Email </label>
 			<input type="text" name="user[email]" value="<%=@user.email%>">
 		</p>
+			<input type="hidden" name="user[user_type]" value="regular">
 		<p>
-			<input type="text" name="user[user_type]" value="<%=@user.user_type%>">
-		</p>
-		<p>
-			<input type="password" name="user[password]" value="<%=@user.password_digest%>">
+			<label for="password">New password </label>
+			<input type="password" name="user[password]">
 		</p>
 		<input type="submit" value="Edit/Update user">
 	</form>
