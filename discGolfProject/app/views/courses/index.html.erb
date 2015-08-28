@@ -1,10 +1,80 @@
-<% if session[:user_id] %>
-	<p><strong>Logged in user: </strong><%= @user.first_name %> <%=@user.last_name %></p>
-<% end %>
-<h1>All courses</h1>
-<% @courses.each do |c| %>
-		<p><%= c.name %>: <%= c.city %>,<%= c.state %></p>
-			<p>Latest comment: <%= c.comments.last.content%></p>
-			<p>Total comments: <%= c.comments.count %></p>
-		<hr>
-<% end %>
+<% @title_tag = "Seattle Area Disc Golf" %>
+<% @body_id = "home" %>
+
+<% # Title tag %>
+<% content_for :head do
+  @title_tag
+end %>
+
+<% # Body tag ID %>
+<% content_for :body_id do
+  @body_id
+end %>
+
+<section>
+  <article id="slideshow">
+	<div class="row">
+	  <div class="span12">
+		<div class="responsive-images">
+		  <div class="cycle-slideshow">
+			<img src="/assets/home-slideshow/disc1.jpg" width="1300" height="400" alt="disc golf" />
+			<img src="/assets/home-slideshow/disc2.jpg" width="1300" height="400" alt="disc golf" />
+			<img src="/assets/home-slideshow/disc3.jpg" width="1300" height="400" alt="disc golf" />
+			<img src="/assets/home-slideshow/disc4.jpg" width="1300" height="400" alt="disc golf" />
+		  </div>
+		</div>
+	  </div>
+	</div>
+  </article>
+
+  <article>
+	<div class="container">
+	  <div class="row">
+		<div class="col-md-12">
+		  <% if session[:user_id] %>
+			  <p><strong>Logged in user: </strong><%= @user.first_name %> <%=@user.last_name %></p>
+		  <% end %>
+
+		</div>
+	  </div>
+	</div>
+
+	<div class="container">
+	  <div class="row">
+		<div class="col-md-12">
+
+		  <table id="course-list">
+			<thead>
+			<tr>
+			  <th>Course</th>
+			  <th>Total Comments</th>
+			  <th class="tablet-hide">Latest Comment</th>
+			</tr>
+			</thead>
+			<tbody>
+				<% @courses.each do |c| %>
+					<tr>
+					  <td>
+						<h2><a href="/courses/<%= c.id %>"><%= c.name %></a></h2>
+						<p><%= c.city %>, <%= c.state %><br />
+						  <a href="/courses/<%= c.id %>">See info</a></p>
+					  </td>
+					  <td>
+						<h2><a href="/courses/<%= c.id %>#comments"><%= c.comments.count %></a></h2>
+					  </td>
+					  <td class="tablet-hide">
+						<!--<h2>LAST_COMMENTER_NAME_HERE</h2>-->
+						<!--<p><a href="#"><%= c.comments.last.content %></a></p>-->
+						<h2><a href="/courses/<%= c.id %>#comments"><%= c.comments.last.content %></a></h2>
+					  </td>
+					</tr>
+				<% end %>
+
+			</tbody>
+		  </table>
+		</div>
+	  </div>
+	</div>
+  </article>
+
+</section>

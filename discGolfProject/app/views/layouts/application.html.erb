@@ -1,14 +1,31 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
 <head>
-  <title>SeaDiscGolf</title>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title><%= yield :head %></title>
   <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track' => true %>
   <%= javascript_include_tag 'application', 'data-turbolinks-track' => true %>
   <%= csrf_meta_tags %>
 </head>
-<body>
+<body id="<%= yield :body_id %>">
+
+<header>
+  <nav>
+    <ul>
+      <li><a class="current" href="/">Home</a></li>
+      <li><a href="registration.html">Login / Register</a></li>
+    </ul>
+    <a id="logo" href="/"></a>
+  </nav>
+</header>
 
 <%= yield %>
+
+<footer>
+  <p>&copy;2015 Joe Klinck and Matt Jennings. All rights reserved.</p>
+</footer>
 
 </body>
 </html>
