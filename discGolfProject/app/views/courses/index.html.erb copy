@@ -16,7 +16,14 @@ end %>
 	<div class="row">
 	  <div class="span12">
 		<div class="responsive-images">
+		  <!--<div class="cycle-slideshow">-->
 			<img src="/assets/home-slideshow/disc<%= rand(1..4) %>.jpg" width="1300" height="400" alt="disc golf" />
+
+			<!--<img src="/assets/home-slideshow/disc2.jpg" width="1300" height="400" alt="disc golf" />
+			<img src="/assets/home-slideshow/disc3.jpg" width="1300" height="400" alt="disc golf" />
+			<img src="/assets/home-slideshow/disc4.jpg" width="1300" height="400" alt="disc golf" />-->
+
+		  <!--</div>-->
 		</div>
 	  </div>
 	</div>
@@ -53,22 +60,11 @@ end %>
 						  <a href="/courses/<%= c.id %>">See info</a></p>
 					  </td>
 					  <td>
-						<% # Display a comment count if there are more than 0 comments %>
-						<% if c.comments.count > 0 %>
-							<h2><a href="/courses/<%= c.id %>#comments"><%= c.comments.count %></a></h2>
-						<% else %>
-							<h2>0</h2>
-						<% end %>
+						<h2><a href="/courses/<%= #c.id %>#comments"><%= #c.comments.count %></a></h2>
 					  </td>
 					  <td class="tablet-hide">
-						<% # Display a commenter name/latest comment if there are more than 0 comments %>
-						<% if c.comments.count > 0 %>
-							<h2><%= c.comments.last.user.first_name %></h2>
-							<p><a href="/courses/<%= c.id %>#comments"><%= c.comments.last.content %></a></p>
-						<% else %>
-							<h2>No Comments</h2>
-							<p>&nbsp;</p>
-						<% end %>
+						<h2><%= #c.comments.last.user.first_name %></h2>
+						<p><a href="/courses/<%= #c.id %>#comments"><%= #c.comments.last.content %></a></p>
 					  </td>
 					</tr>
 				<% end %>
