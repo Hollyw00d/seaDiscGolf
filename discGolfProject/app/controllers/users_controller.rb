@@ -28,20 +28,21 @@ class UsersController < ApplicationController
   end
 
   def login
+    @user = User.new
     if session[:user_id]
       redirect_to "/"
     end
   end
 
   def userLogin
-    user = User.find_by_email(params[:email])
-    if user && user.authenticate(params[:password])
+    @user = User.find_by_email(params[:email])
+    if @user && @user.authenticate(params[:password])
       # session[:user_id] = user.user_id
-      session[:user_id] = user.id
-      session[:user_type] = user.user_type
-      redirect_to "/users/#{user.id}"
+      session[:user_id] = @user.id
+      session[:user_type] = @user.user_type
+      redirect_to "/users/#{@user.id}"
     else
-      redirect_to "/users/login"
+      render "login"
     end
   end
 
