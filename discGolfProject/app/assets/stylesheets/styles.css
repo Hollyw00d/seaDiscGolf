@@ -121,6 +121,19 @@ nav #sign-out-form input {
     -webkit-border-radius: 5px;
     background: #ccc;
     color: #333;
+    padding: 0 5px;
+}
+
+#user-profile nav #profile-link a:link, #user-profile nav #profile-link a:visited,
+#user-profile nav #profile-link a:hover, #user-profile nav #profile-link a:active {
+    color: #98c448;
+}
+
+nav #profile-link {
+    font-size: 16px;
+    line-height: 100px;
+    text-align: left;
+    padding: 0;
 }
 
 #logo {
@@ -282,6 +295,15 @@ footer p {
         line-height: 26px;
         padding: 4px 0 0;
     }
+
+    nav #profile-link {
+        font-size: 16px;
+        line-height: 38px;
+        text-align: left;
+        padding: 0;
+    }
+
+
 
     /****** Content ******/
     .narrow {
