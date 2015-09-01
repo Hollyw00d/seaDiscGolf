@@ -1,6 +1,8 @@
 class CoursesController < ApplicationController
   def index
-    @courses = Course.all
+
+    # @courses = Course.all
+    @courses = Course.order("name ASC").all
 
     if session[:user_id]
       @user = User.find(session[:user_id])

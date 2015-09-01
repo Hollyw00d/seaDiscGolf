@@ -3,12 +3,14 @@ class User < ActiveRecord::Base
   has_many :comments, dependent: :destroy
   EMAIL_REGEX = /\A([^@\s]+)@((?:[-a-z0-9]+\.)+[a-z]+)\z/i
   before_validation :downcase_email
-  validates :first_name, presence:true
-  validates :last_name, presence:true
-  validates :email, presence:true, uniqueness:true, format: { with: EMAIL_REGEX }
+  validates :first_name, presence:true, length: { in: 2..60 }
+  validates :last_name, presence:true, length: { in: 2..60 }
+  validates :email, presence:true, uniqueness:true, length: { maximum: 255 }, format: { with: EMAIL_REGEX }
   validates :user_type, presence:true
-  validates :password, presence:true, confirmation:true
-  validates_confirmation_of :password
+  validates :password, length: { in: 8..200 }
+
+  # validates :password, presence:true, confirmation:true
+  # validates_confirmation_of :password
 
 private
 	def downcase_email

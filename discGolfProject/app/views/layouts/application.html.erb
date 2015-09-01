@@ -22,11 +22,11 @@
               <input type="submit" value="Sign Out" />
             </form>
           </li>
-          <li class="light-gray">
-          Hi, <%= @user.first_name %>
+          <li id="profile-link">
+            <a href="/users/<%= session[:user_id] %>">Your Profile</a>
           </li>
       <% else %>
-          <li><a id="register-nav" href="/users/new">Sign In / Register</a></li>
+          <li><a id="signin-nav" href="/users/login">Sign In</a> / <a id="register-nav" href="/users/new">Register</a></li>
       <% end %>
     </ul>
     <a id="logo" href="/"></a>

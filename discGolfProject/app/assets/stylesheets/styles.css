@@ -13,6 +13,11 @@ h2 {
     font-size: 22px;
 }
 
+h3 {
+    color: #006633;
+    font-size: 18px;
+}
+
 a:link, a:visited {
     color: #006633;
     text-decoration: none;
@@ -49,6 +54,14 @@ p a:hover, p a:active {
     color: #ccc;
 }
 
+.error {
+    color: red;
+}
+
+.success {
+    color: green;
+}
+
 /****** Navigation and Header ******/
 nav {
     background: #333;
@@ -72,6 +85,7 @@ nav li {
     line-height: 100px;
     font-size: 20px;
     padding: 0 10px;
+    color: #ccc;
 }
 
 nav a:link, nav a:visited {
@@ -94,17 +108,37 @@ nav a:hover, nav a:active {
     color: #98c448;
 }
 
+#user-login nav a#signin-nav:link, #user-login nav a#signin-nav:visited,
+#user-login nav a#signin-nav:hover, #user-login nav a#signin-nav:active {
+    color: #98c448;
+}
+
 nav #sign-out-form input {
     line-height: 25px;
     border-radius: 5px;
     -moz-border-radius: 5px;
     -o-border-radius: 5px;
     -webkit-border-radius: 5px;
+    background: #ccc;
+    color: #333;
+    padding: 0 5px;
+}
+
+#user-profile nav #profile-link a:link, #user-profile nav #profile-link a:visited,
+#user-profile nav #profile-link a:hover, #user-profile nav #profile-link a:active {
+    color: #98c448;
+}
+
+nav #profile-link {
+    font-size: 16px;
+    line-height: 100px;
+    text-align: left;
+    padding: 0;
 }
 
 #logo {
     display: inline-block;
-    background: url(logo.gif) no-repeat top left;
+    background: url(https://sites.google.com/site/seattlediscgolfimages/_/rsrc/1441069288839/home/logo.png) no-repeat top left;
     width: 140px;
     height: 100px;
     text-indent: -9999px;
@@ -112,7 +146,7 @@ nav #sign-out-form input {
 }
 
 a:hover#logo, a:active#logo {
-    background: url(logo.gif) no-repeat bottom left;
+    background: url(https://sites.google.com/site/seattlediscgolfimages/_/rsrc/1441069288839/home/logo.png) no-repeat bottom left;
 }
 
 .row {
@@ -218,9 +252,33 @@ footer p {
 }
 
 
+/****** Media Query for 991px and smaller  ******/
+@media only screen and (max-width: 991px){
+    /****** Single Course ******/
+    .course-address {
+        margin: 0 0 35px;
+    }
+
+    .course-address h2 {
+        font-size: 18px;
+    }
+
+    .course-address h2 a:link, .course-address h2 a:visited {
+        border: 2px dotted #006633;
+        border-width: 0 0 2px 0;
+    }
+
+    .course-address h2 a:hover, .course-address h2 a:active {
+        border-width: 0;
+        text-decoration: none;
+    }
+
+}
+
 
 /****** Media Query for iPads and Smaller Devices ******/
 @media only screen and (max-width: 768px){
+
     /****** General ******/
     .tablet-hide {
         display: none;
@@ -237,6 +295,15 @@ footer p {
         line-height: 26px;
         padding: 4px 0 0;
     }
+
+    nav #profile-link {
+        font-size: 16px;
+        line-height: 38px;
+        text-align: left;
+        padding: 0;
+    }
+
+
 
     /****** Content ******/
     .narrow {

@@ -23,7 +23,7 @@ end %>
 		  </div>
 
 		  <div class="row">
-			<div class="col-md-6">
+			<div class="col-md-6 course-address">
 				<h1><%= @course.name %></h1>
 				<p>
 				  <%= @course.street %><br />
@@ -37,6 +37,7 @@ end %>
 			</div>
 
 			<div class="col-md-6 comments">
+			  	<a name="comments"></a>
 				<h2>Comments</h2>
 				<% @course.comments.reverse_each do |comment| %>
 					<p>
