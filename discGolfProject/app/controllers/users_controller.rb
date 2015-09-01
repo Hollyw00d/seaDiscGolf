@@ -12,6 +12,7 @@ class UsersController < ApplicationController
   end
 
   def new
+    @user = User.new
     if session[:user_id]
       redirect_to "/"
     end
@@ -50,12 +51,13 @@ class UsersController < ApplicationController
   end
 
   def create
-  	user = User.new(user_params)
-    if user.save
-      session[:user_id] = user.id
-  	  redirect_to "/users/#{user.id}"
+  	@user = User.new(user_params)
+    if @user.save
+      session[:user_id] = @user.id
+      flash[:notice] = "New User Created"
+  	  redirect_to "/users/#{@user.id}"
     else
-      redirect_to "/users/new"
+      render "new"
     end
   end
 

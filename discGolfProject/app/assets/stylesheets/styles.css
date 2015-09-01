@@ -54,6 +54,14 @@ p a:hover, p a:active {
     color: #ccc;
 }
 
+.error {
+    color: red;
+}
+
+.success {
+    color: green;
+}
+
 /****** Navigation and Header ******/
 nav {
     background: #333;
