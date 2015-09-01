@@ -85,6 +85,7 @@ nav li {
     line-height: 100px;
     font-size: 20px;
     padding: 0 10px;
+    color: #ccc;
 }
 
 nav a:link, nav a:visited {
@@ -104,6 +105,11 @@ nav a:hover, nav a:active {
 
 #user-register nav a#register-nav:link, #user-register nav a#register-nav:visited,
 #user-register nav a#register-nav:hover, #user-register nav a#register-nav:active {
+    color: #98c448;
+}
+
+#user-login nav a#signin-nav:link, #user-login nav a#signin-nav:visited,
+#user-login nav a#signin-nav:hover, #user-login nav a#signin-nav:active {
     color: #98c448;
 }
 
