@@ -109,7 +109,7 @@ nav #sign-out-form input {
 
 #logo {
     display: inline-block;
-    background: url(logo.gif) no-repeat top left;
+    background: url(https://sites.google.com/site/seattlediscgolfimages/_/rsrc/1441069288839/home/logo.png) no-repeat top left;
     width: 140px;
     height: 100px;
     text-indent: -9999px;
@@ -117,7 +117,7 @@ nav #sign-out-form input {
 }
 
 a:hover#logo, a:active#logo {
-    background: url(logo.gif) no-repeat bottom left;
+    background: url(https://sites.google.com/site/seattlediscgolfimages/_/rsrc/1441069288839/home/logo.png) no-repeat bottom left;
 }
 
 .row {
