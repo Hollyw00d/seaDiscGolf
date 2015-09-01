@@ -119,6 +119,8 @@ nav #sign-out-form input {
     -moz-border-radius: 5px;
     -o-border-radius: 5px;
     -webkit-border-radius: 5px;
+    background: #ccc;
+    color: #333;
 }
 
 #logo {
@@ -263,6 +265,7 @@ footer p {
 
 /****** Media Query for iPads and Smaller Devices ******/
 @media only screen and (max-width: 768px){
+
     /****** General ******/
     .tablet-hide {
         display: none;
