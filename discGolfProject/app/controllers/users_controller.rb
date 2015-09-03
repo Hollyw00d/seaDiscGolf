@@ -1,6 +1,9 @@
 class UsersController < ApplicationController
+
+  before_action :require_correct_user, only: [:show, :edit, :update, :delete]
+
   def index
-      if session[:user_id] && session[:user_type]=="admin"
+      if session[:user_id] && session[:user_type] == "admin"
         @user = User.find(session[:user_id])
         @users = User.order("id ASC").all
       else
@@ -16,12 +19,18 @@ class UsersController < ApplicationController
   end
 
   def show
-  	unless session[:user_id]
-      redirect_to "/"
-    else
+    @user = User.find(params[:id])
+
+    if session[:user_id] && session[:user_type] == "admin"
       @loggedinUser = User.find(session[:user_id])
-    	@user = User.find(params[:id])
+      @user = User.find(params[:id])
+    elsif session[:user_id] && session[:user_type] != "admin"
+      @loggedinUser = User.find(session[:user_id])
+      @user = User.find(params[:id])
+    else
+      redirect_to "/"
     end
+
   end
 
   def login
@@ -76,7 +85,9 @@ class UsersController < ApplicationController
     @user = User.find(params[:id])
     @user.first_name = params[:first_name]
     @user.destroy
-    session[:user_id] = nil
+    if session[:user_type] != "admin"
+      session[:user_id] = nil
+    end
     redirect_to "/"
   end
 
