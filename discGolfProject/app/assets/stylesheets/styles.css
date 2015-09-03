@@ -228,7 +228,7 @@ footer p {
     padding: 8px;
 }
 
-/****** Comments ******/
+/****** Course Comments ******/
 .comments p {
     padding: 5px 5px 0;
 }
@@ -251,6 +251,10 @@ footer p {
     display: inline-block;
 }
 
+/****** User Profile ******/
+#user-profile h3 {
+    color: #000;
+}
 
 /****** Media Query for 991px and smaller  ******/
 @media only screen and (max-width: 991px){
