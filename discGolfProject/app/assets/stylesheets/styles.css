@@ -256,6 +256,38 @@ footer p {
     color: #000;
 }
 
+/****** All Users ******/
+#all-users-table {
+    width: 100%;
+    border-collapse: collapse;
+}
+
+#all-users-table th {
+    vertical-align: top;
+    font-size: 22px;
+    padding: 10px;
+}
+
+#all-users-table td {
+    vertical-align: top;
+    padding: 10px;
+}
+
+#all-users-table thead tr {
+    color: #fff;
+    background: #000;
+}
+
+#all-users-table tbody tr:nth-child(odd) {
+    background: #B0B0B0;
+}
+
+#all-users-table tbody tr:nth-child(even) {
+    background: #ccc;
+}
+
+
+
 /****** Media Query for 991px and smaller  ******/
 @media only screen and (max-width: 991px){
     /****** Single Course ******/

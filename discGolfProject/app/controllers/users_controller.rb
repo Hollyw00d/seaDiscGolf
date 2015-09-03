@@ -2,7 +2,7 @@ class UsersController < ApplicationController
   def index
       if session[:user_id] && session[:user_type]=="admin"
         @user = User.find(session[:user_id])
-        @users = User.all
+        @users = User.order("id ASC").all
       else
         redirect_to "/"
       end

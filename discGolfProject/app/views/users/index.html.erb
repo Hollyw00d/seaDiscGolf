@@ -1,8 +1,67 @@
-<% if session[:user_id] %>
-	<p><strong>Logged in user: </strong><%= @user.first_name %> <%=@user.last_name %></p>
-<% end %>
+<% @title_tag = "All User Profiles" %>
+<% @body_id = "all-user-profiles" %>
 
-<h1>All users</h1>
-<% @users.each do |u| %>
-	<p><%= u.first_name %> <%= u.last_name %></p>
-<% end %>
+<% # Title tag %>
+<% content_for :head do
+  @title_tag
+end %>
+
+<% # Body tag ID %>
+<% content_for :body_id do
+  @body_id
+end %>
+
+<section>
+  <article>
+
+	<div class="container">
+	  <div class="row">
+		<div class="col-md-12">
+			<h1>All User Profiles</h1>
+		</div>
+	  </div>
+	</div>
+
+	<div class="container">
+		<div class="row">
+		  <div class="col-md-12">
+			<table id="all-users-table">
+			  <thead>
+			  	<tr>
+				  	<th>ID</th>
+					<th>First / Last Names</th>
+					<th>Email</th>
+					<th class="tablet-hide">User Type</th>
+				    <th>Action</th>
+				</tr>
+			  </thead>
+			  <tbody>
+				<% @users.each do |u| %>
+					<tr>
+					  <td>
+						<%= u.id %>
+					  </td>
+					  <td>
+						<%= u.first_name %> <%= u.last_name %>
+					  </td>
+					  <td>
+						<%= u.email %>
+					  </td>
+					  <td class="tablet-hide">
+						<%= u.user_type %>
+					  </td>
+					  <td>
+						EDIT_HERE | DELETE_HERE
+					  </td>
+					</tr>
+				<% end %>
+			  </tbody>
+			</table>
+
+		  </div>
+		</div>
+	</div>
+
+  </article>
+
+</section>
