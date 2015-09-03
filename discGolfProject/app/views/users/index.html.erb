@@ -32,7 +32,7 @@ end %>
 					<th>First / Last Names</th>
 					<th>Email</th>
 					<th class="tablet-hide">User Type</th>
-				    <th>Action</th>
+				    <th>Edit</th>
 				</tr>
 			  </thead>
 			  <tbody>
@@ -51,7 +51,10 @@ end %>
 						<%= u.user_type %>
 					  </td>
 					  <td>
-						EDIT_HERE | DELETE_HERE
+						<form action="/users/<%= u.id %>" method="get">
+						  <input type="submit" value="Edit" />
+
+						</form>
 					  </td>
 					</tr>
 				<% end %>

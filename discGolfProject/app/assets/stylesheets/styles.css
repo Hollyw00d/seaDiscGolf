@@ -286,6 +286,18 @@ footer p {
     background: #ccc;
 }
 
+#all-users-table input {
+    display: inline-block;
+    line-height: 25px;
+    border-radius: 5px;
+    -moz-border-radius: 5px;
+    -o-border-radius: 5px;
+    -webkit-border-radius: 5px;
+    background: #ccc;
+    color: #333;
+    padding: 10px 30px;
+    margin: 0 0 5px;
+}
 
 
 /****** Media Query for 991px and smaller  ******/
@@ -340,7 +352,6 @@ footer p {
     }
 
 
-
     /****** Content ******/
     .narrow {
         width: 100%;
@@ -352,4 +363,19 @@ footer p {
         font-size: 12px;
     }
 
+    /****** All Users ******/
+    #all-users-table th {
+        font-size: 12px;
+        padding: 5px;
+    }
+
+    #all-users-table td {
+        font-size: 12px;
+        padding: 5px;
+    }
+
+    #all-users-table input {
+        padding: 20px 20px;
+        margin: 0 0 30px;
+    }
 }
