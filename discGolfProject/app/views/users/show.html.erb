@@ -47,6 +47,10 @@ end %>
 			<div class="row">
 				<div class="col-md-12">
 				  <h2><a href="/users/edit/<%= @user.id %>">Edit User Profile</a></h2>
+
+				  <% if session[:user_id] && session[:user_type] == "admin" %>
+				  	<h2><a href="/users">View All Users</a></h2>
+				  <% end %>
 				</div>
 			</div>
 		</div>

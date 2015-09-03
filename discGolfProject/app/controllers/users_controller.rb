@@ -3,7 +3,6 @@ class UsersController < ApplicationController
       if session[:user_id] && session[:user_type]=="admin"
         @user = User.find(session[:user_id])
         @users = User.all
-        redirect_to "/users"
       else
         redirect_to "/"
       end
